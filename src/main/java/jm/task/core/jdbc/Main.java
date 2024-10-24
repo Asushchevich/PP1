@@ -22,11 +22,12 @@ public class Main {
 //        usersss.forEach(System.out::println);
 //        userDao.cleanUsersTable();
         Util.getSessionFactory();
-
-
+//
+//
         UserDaoHibernateImpl userDaoHibernate = new UserDaoHibernateImpl();
-        List<User> usersss = userDaoHibernate.getAllUsers();
-        usersss.forEach(System.out::println);
+//        List<User> usersss = userDaoHibernate.getAllUsers();
+//        usersss.forEach(System.out::println);
+//        userDaoHibernate.createUsersTable();
     }
 }
 

@@ -3,6 +3,7 @@ package jm.task.core.jdbc.dao;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +16,34 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void createUsersTable() {
+        try (Session session = Util.getSessionFactory().openSession()){
+            session.beginTransaction();
 
+            session.createSQLQuery("CREATE TABLE user_list (" +
+                    "id SERIAL PRIMARY KEY," +
+                    "first_name VARCHAR(128) NOT NULL," +
+                    "last_name VARCHAR(128) NOT NULL," +
+                    "age INT NOT NULL)").executeUpdate();
+
+            session.getTransaction().commit();
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
     public void dropUsersTable() {
+        try (Session session = Util.getSessionFactory().openSession()){
+            session.beginTransaction();
 
+            session.createSQLQuery("DROP TABLE IF EXISTS user_list").executeUpdate();
+
+            session.getTransaction().commit();
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
