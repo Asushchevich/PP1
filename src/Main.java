@@ -14,5 +14,6 @@ public class Main {
         System.out.printf("git");
         System.out.printf("From PC");
         System.out.printf("From Macbook");
+        System.out.println("update");
     }
 }
